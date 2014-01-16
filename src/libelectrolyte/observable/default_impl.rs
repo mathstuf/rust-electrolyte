@@ -10,15 +10,15 @@ use observable::trait_::Observer;
 use observable::trait_::Observable;
 
 struct DefaultObservable<T> {
-    value: ~T,
+    value: T,
     listeners: ~[~Observer<T>]
 }
 
 impl<T> Observable<T> for DefaultObservable<T> {
-    fn update(&mut self, value: ~T) {
+    fn update(&mut self, value: T) {
         self.value = value;
         self.listeners.map(|f| {
-            f.notify(self.value);
+            f.notify(&self.value);
         });
     }
 
@@ -28,7 +28,7 @@ impl<T> Observable<T> for DefaultObservable<T> {
 }
 
 /// Create a new, default observable around a value.
-pub fn observe<T>(value: ~T) -> DefaultObservable<T> {
+pub fn observe<T>(value: T) -> DefaultObservable<T> {
     DefaultObservable {
         value: value,
         listeners: ~[]

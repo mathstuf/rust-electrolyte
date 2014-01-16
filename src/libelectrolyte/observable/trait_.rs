@@ -15,7 +15,7 @@ pub trait Observer<T> {
 /// The main trait which exposes the interface for Observable types.
 pub trait Observable<T> {
     /// Update the current value.
-    fn update(&mut self, ~T);
+    fn update(&mut self, T);
 
     /// Register a function which reacts to a value update.
     fn onValue(&mut self, ~Observer<T>);
