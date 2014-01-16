@@ -22,8 +22,13 @@ impl<T> Observable<T> for DefaultObservable<T> {
         });
     }
 
-    fn watch(&mut self, f: ~Observer<T>) {
+    fn watch(&mut self, f: ~Observer<T>) -> u64 {
         self.listeners.push(f);
+        0 // TODO: Implement an ID
+    }
+
+    fn unwatch(&mut self, id: u64) {
+        // TODO: Implement.
     }
 }
 

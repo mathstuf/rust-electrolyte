@@ -18,5 +18,8 @@ pub trait Observable<T> {
     fn update(&mut self, T);
 
     /// Register a function which reacts to a value update.
-    fn watch(&mut self, ~Observer<T>);
+    fn watch(&mut self, ~Observer<T>) -> u64;
+
+    /// Unregister a watcher.
+    fn unwatch(&mut self, u64);
 }
