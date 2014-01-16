@@ -22,7 +22,7 @@ impl<T> Observable<T> for DefaultObservable<T> {
         });
     }
 
-    fn onValue(&mut self, f: ~Observer<T>) {
+    fn watch(&mut self, f: ~Observer<T>) {
         self.listeners.push(f);
     }
 }

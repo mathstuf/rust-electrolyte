@@ -18,5 +18,5 @@ pub trait Observable<T> {
     fn update(&mut self, T);
 
     /// Register a function which reacts to a value update.
-    fn onValue(&mut self, ~Observer<T>);
+    fn watch(&mut self, ~Observer<T>);
 }
